@@ -1,0 +1,21 @@
+Compendio corso 
+
+Come muoversi all'interno dei file 
+
+=> Giorno per giorno verranno caricati i codici che il professore manda su WA; 
+=> I codici sono caricati nell'ordine esatto in cui il professore raffina il codice; 
+
+
+
+------------------------------------------------------------------------------------------------
+         //////////////////////////////////////////////////////////////
+queste sono le barre spaziatrici che servono per separare ed organizzare il file testuale. 
+	//////////////////////////////////////////////////////////////
+------------------------------------------------------------------------------------------------
+
+
+
+I => I codici sono scritti in questo per poter seguire di volta in volta lo sviluppo 
+II=> 
+
+

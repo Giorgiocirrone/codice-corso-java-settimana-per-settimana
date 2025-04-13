@@ -1,0 +1,282 @@
+lezione lunedì 7/04
+
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+        
+		System.out.println("Questo programma chiederà 10 volte di inserire un numero INTERO");
+		System.out.println("Potrai inserire un numero pari o dispari (fai tu)");
+		System.out.println("Alla fine ti dirò quanti numeri dispari hai inerito e quanti pari");
+		
+		int contaPari 		= 0;
+		int contaDispari 	= 0;
+		
+		for (int i=0;i<10;i++)
+		{
+			System.out.println("Inserisci un numero intero a caso");
+			int num = input.nextInt();
+			input.nextLine();
+			
+			if (num%2 == 0) {
+				contaPari++;
+			}
+			else
+			{
+				contaDispari++;         
+			}			
+		}
+		
+		System.out.println("Hai inserito " + contaPari + " numeri pari");
+		System.out.println("Hai inserito " + contaDispari + " numeri dispari");
+
+	}
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Palindromo {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Inserisci una parola");
+		
+		String parola = input.nextLine();
+		
+		System.out.println("La parola inserita ha lunghezza "+parola.length());
+		System.out.println("Ora vesiamo se è o meno palindroma");
+		parola = parola.toUpperCase();
+		String parola_al_contrario = "";
+		
+		for (int i = parola.length()-1; i>=0; i--) {
+			parola_al_contrario = parola_al_contrario + parola.charAt(i); 
+		}
+		
+		if (parola.equals(parola_al_contrario)) {
+			System.out.println("La parola è palindroma");
+		} else {
+			System.out.println("La parola non è palindroma");
+		}
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+import java.util.Scanner;
+
+public class Palindromo {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Inserisci una parola");
+		
+		String parola = input.nextLine();
+		
+		System.out.println("La parola inserita ha lunghezza "+parola.length());
+		System.out.println("Ora vediamo se è o meno palindroma");
+		parola = parola.toUpperCase();
+		
+		
+		String parola_al_contrario = "";
+		
+		for (int i = parola.length()-1; i>=0; i--) {
+			parola_al_contrario = parola_al_contrario + parola.charAt(i); 
+		}
+		
+		if (parola.equals(parola_al_contrario)) {
+			System.out.println("La parola è palindroma");
+		} else {
+			System.out.println("La parola non è palindroma");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Palindromo {
+	
+	static String parola;
+	static Random r;
+
+	public static void saluta() {
+		System.out.println("CIAO CIAO");
+	}
+	
+	public static void insultami()
+	{		
+		int numero = r.nextInt(5);
+		if (numero==0)
+		{
+			System.out.println("Sei brutto");
+		}
+		else if (numero==1)
+		{
+			System.out.println("Sei stupido");
+		}
+		else if (numero == 2) {
+			System.out.println("Sei un idiota");
+		} else if (numero == 3) {
+			System.out.println("Sei un deficiente");
+		} else if (numero == 4) {
+			System.out.println("Sei un cretino");
+		}
+
+		else {
+			System.out.println("Sei un coglione");
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		// ORA facciamo fare una addizione tra due numeri casuali
+		r = new Random();
+		// n1 deve essere un numero double casuale tra 1 e 100
+		int n1 = r.nextInt(100);
+		int n2 = r.nextInt(100);
+		System.out.println("Quanto fa "+n1+"+"+n2+"?");
+		Scanner s = new Scanner(System.in);
+		double risposta = s.nextDouble();
+		s.nextLine();
+		if (risposta == (n1+n2))
+		{
+			System.out.println("OK");
+		}
+		else
+		{
+			insultami();
+		}
+		
+	
+	}
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Palindromo {
+	
+	static String parola;
+	static Random r;
+	static String ripetere;
+
+	public static void saluta() {
+		System.out.println("CIAO CIAO");
+	}
+	
+	public static void insultami()
+	{		
+		int numero = r.nextInt(5);
+		if (numero==0)
+		{
+			System.out.println("Sei brutto");
+		}
+		else if (numero==1)
+		{
+			System.out.println("Sei stupido");
+		}
+		else if (numero == 2) {
+			System.out.println("Sei un idiota");
+		} else if (numero == 3) {
+			System.out.println("Sei un deficiente");
+		} else if (numero == 4) {
+			System.out.println("Sei un cretino");
+		}
+
+		else {
+			System.out.println("Sei un coglione");
+		}
+	}
+	
+	public static void main(String[] args) {
+		do {
+				// ORA facciamo fare una addizione tra due numeri casuali
+				r = new Random();
+				// n1 deve essere un numero double casuale tra 1 e 100
+				int n1 = r.nextInt(100);
+				int n2 = r.nextInt(100);
+				System.out.println("Quanto fa "+n1+"+"+n2+"?");
+				Scanner s = new Scanner(System.in);
+				double risposta = s.nextDouble();
+				s.nextLine();
+				if (risposta == (n1+n2))
+				{
+					System.out.println("OK");
+				}
+				else
+				{
+					insultami();
+				}
+				
+				do
+					{
+						System.out.println("RIPETO? (SI/NO)");
+						ripetere = s.nextLine().toUpperCase();
+						if (!ripetere.equals("SI") && !ripetere.equals("NO")) {
+							System.out.println("DEVI SCRIVERE SI o NO");
+						}
+					
+					} while (!ripetere.equals("SI") && !ripetere.equals("NO"));
+				
+				
+		} while (ripetere.equals("SI"));
+		System.out.println("CIAO CIAO");
+		
+	}
+}
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
