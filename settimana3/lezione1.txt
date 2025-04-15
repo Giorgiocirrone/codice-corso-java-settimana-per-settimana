@@ -1,0 +1,1013 @@
+Lunedì 14/04
+
+Argomento ArrayList 
+
+public class Persona {
+	private String nome;
+	private String cognome;
+	private int anni;
+	
+	public Persona() {
+		this.nome = "";
+		this.cognome = "";
+		this.anni = 0;
+	}
+	
+	public Persona(String nome, String cognome, int anni) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.anni = anni;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getCognome() {
+		return cognome;
+	}
+	
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+	
+	public int getAnni() {
+		return anni;
+	}
+	
+	public void setAnni(int anni) {
+		this.anni = anni;
+	}
+	
+	@Override
+	public String toString() {
+		return "Persona {nome=" + nome + ", cognome=" + cognome + ", anni=" + anni + "}";
+	}
+	
+}
+
+
+import java.util.ArrayList;
+
+public class ArrayList01 {
+
+	public static void main(String[] args) {
+		ArrayList A = new ArrayList();
+		A.add(100);
+		A.add(200);
+		A.add("Pippo");
+		A.add(3.14);
+		A.add(false);
+		A.add("YEEE");
+			
+		Persona p1 = new Persona("Mario", "Rossi", 30);
+		A.add(p1);
+				
+		A.add( new Persona("Giovanni", "Verdi", 25) );
+		
+		int c = A.size();
+		System.out.println("La lista contiene " + c + " elementi.");
+		A.add("Gigi");
+
+		System.out.println("La lista contiene " + A.size() + " elementi.");
+		A.remove(0);
+		System.out.println("La lista contiene " + A.size() + " elementi.");
+		
+		System.out.println(A);
+		
+		System.out.println("Il primo elemento è: " + A.get(0));
+		System.out.println("Il secondo elemento è: " + A.get(1));
+		System.out.println("Il terzo elemento è: " + A.get(2));
+		System.out.println("Il quarto elemento è: " + A.get(3));
+		System.out.println("Il quinto elemento è: " + A.get(4));
+		System.out.println("Il sesto elemento è: " + A.get(5));
+		System.out.println("Il settimo elemento è: " + A.get(6));
+		
+	
+		
+
+	}
+
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+
+spostare la classe persoan in package dati 
+
+package Dati;
+
+public class Persona {
+	private String nome;
+	private String cognome;
+	private int anni;
+	
+	public Persona() {
+		this.nome = "";
+		this.cognome = "";
+		this.anni = 0;
+	}
+	
+	public Persona(String nome, String cognome, int anni) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.anni = anni;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getCognome() {
+		return cognome;
+	}
+	
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+	
+	public int getAnni() {
+		return anni;
+	}
+	
+	public void setAnni(int anni) {
+		this.anni = anni;
+	}
+	
+	@Override
+	public String toString() {
+		return "Persona {nome=" + nome + ", cognome=" + cognome + ", anni=" + anni + "}";
+	}
+	
+}
+
+
+import java.util.ArrayList;
+import Dati.Persona;
+import classiMie.IO;
+public class ArrayList01 {
+	
+	public static void main(String[] args) {
+		int scelta;
+		ArrayList<Persona> listaPersone = new ArrayList<>();
+		
+		do
+		{			
+			do {
+					System.out.println("1) Aggiungi persona");
+					System.out.println("2) Stampa persone");
+					System.out.println("3) Esci");
+					
+					scelta = IO.getInt("Errore! Inserire un numero!");
+					if (scelta < 1 || scelta > 3)
+					{
+						System.out.println("Errore! Inserire un numero tra 1 e 3!");
+					}
+			}
+			while (scelta < 1 || scelta > 3);
+			
+			switch (scelta)
+			{
+				case 1:
+					// Aggiungi persona
+					System.out.println("Inserisci i dati della persona:");
+					System.out.print("Nome: ");
+					String nome = IO.getString();
+					System.out.print("Cognome: ");
+					String cognome = IO.getString();
+					System.out.print("Età: ");
+					int anni = IO.getInt("Errore! Inserire un numero intero per l'età!");
+
+					Persona p = new Persona(nome, cognome, anni);
+
+					listaPersone.add(p);
+
+					
+
+					System.out.println("Aggiunta avvenuta con successo!");
+					
+				break;
+	
+				case 2:
+					// Stampa persone
+					System.out.println("Lista persone:");
+					for (int i = 0; i < listaPersone.size(); i++) {
+						System.out.println(listaPersone.get(i));
+					}
+					
+				break;			
+			}
+			
+		} while (scelta != 3);
+		
+		System.out.println("Arrivederci!");
+		
+
+	
+		
+
+	}
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ProvaFileTesto01 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Inserisci il testo che vuoi salvare");
+		String testo = input.nextLine();
+		
+		
+		try {
+				FileWriter writer = new FileWriter("file.txt");
+				BufferedWriter bf = new BufferedWriter(writer);
+				
+			    bf.write(testo);
+			    bf.close();
+			    System.out.println("File creato e scritto con successo");
+			} 
+		catch (IOException e) 
+		{
+			System.out.println("Errore nella creazione del file: " + e.getMessage());
+		} 
+		
+
+	}
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ProvaLetturaFileTesto {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		try 
+		{
+			FileReader fr = new FileReader("file.txt");
+			
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ( (line = br.readLine()) != null)
+			 {			
+				 System.out.println(line);
+			}
+			br.close();
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Errore nella creazione del file: " + e.getMessage());
+		} 
+		
+
+	}
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import classiMie.IO;
+
+public class ProvaScritturaFileTesto {
+
+	public static void main(String[] args) {
+		int scelta;
+		String filename = "testo.txt";
+		
+		do {
+			
+				do {
+					    IO.println("1. Aggiungi testo");
+					    IO.println("2. Leggi tutto");
+					    IO.println("3. Esci");
+					    scelta = IO.getInt("Errore: devi inserire un numero");
+					    if (scelta < 1 || scelta > 3)
+					    {
+					    	IO.println("Errore: devi inserire un numero tra 1 e 3");
+					    }
+					} while (scelta < 1 || scelta > 3);
+				
+				switch (scelta) {
+					case 1:
+						   while (true) 
+						   {
+							    IO.println("Inserisci il testo da aggiungere (un vuoto INVIO PER FERMARTI): ");
+							    String testo = IO.getString();
+							    if (testo.equals(""))
+							    {
+							    	break; // Esci dal ciclo se l'input è vuoto                               
+							    }
+							    
+							    
+								try 
+								{
+										FileWriter writer = new FileWriter(filename, true);
+										BufferedWriter bf = new BufferedWriter(writer);
+										
+									    bf.write(testo);
+									    bf.newLine(); // Aggiunge una nuova riga dopo il testo
+									    bf.close();
+									   // System.out.println("File creato e scritto con successo");
+								} 
+								catch (IOException e) 
+								{
+									System.out.println("Errore nella creazione del file: " + e.getMessage());
+								}
+							    
+						   }
+						   IO.println("Sessione di scrittura finita!");
+					break;
+					
+					case 2:
+							try 
+							{
+								FileReader fr = new FileReader(filename);
+								
+								BufferedReader br = new BufferedReader(fr);
+								String line;
+								while ( (line = br.readLine()) != null)
+								 {			
+									 System.out.println(line);
+								}
+								br.close();
+							} 
+							catch (IOException e) 
+							{
+								System.out.println("Errore nella creazione del file: " + e.getMessage());
+							} 
+					break;
+				}
+				
+				IO.println("\n\n\nPREMI INVIO PRIMA DI TORNARE AL MENU...");
+				IO.getString();
+			} while (scelta != 3);
+		
+				
+		
+
+	}
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.ArrayList;
+
+import Dati.Persona;
+import classiMie.IO;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		int scelta;
+		ArrayList<Persona> listaPersone = new ArrayList<>();
+
+		do {
+
+			do {
+				IO.println("1. Aggiungi persona");
+				IO.println("2. Elimina persona");
+				IO.println("3. Visualizza persone");
+				IO.println("4. Esci");
+
+				scelta = IO.getInt("Errore, scegli un numero tra 1 e 4");
+
+				if (scelta < 1 || scelta > 4) {
+					IO.println("Errore, scegli un numero tra 1 e 4");
+					;
+				}
+
+			} while (scelta < 1 || scelta > 4);
+
+		
+
+		switch (scelta) {
+		    case 1: 
+		    	IO.println("Aggiungi i dati della persona:");
+		    	IO.println("Aggiungi nome:");
+		    	String nome = IO.getString();
+		    	IO.println("Aggiungi cognome:");
+		    	String cognome = IO.getString();
+		    	IO.println("Aggiungi eta:");
+		    	int eta = IO.getInt();
+		    	
+		    	Persona persona = new Persona(nome, cognome, eta);
+		    	listaPersone.add(persona);
+		    	IO.println("Persona aggiunta con successo!");
+                break;
+                
+                case 2:
+                	IO.println("Elimina la persona con nome:");
+                    String nomeElimina = IO.getString();
+                    IO.println("Inserisci cognome da eliminare");
+                    String cognomeElimina = IO.getString();
+                    
+                    boolean trovato = false;
+                    int i = 0;
+                    while ( i < listaPersone.size()) 
+                    {
+                    	
+                        if ( 	
+                        		listaPersone.get(i).getNome().equals(nomeElimina) 
+                        		&& 
+                        		listaPersone.get(i).getCognome().equals(cognomeElimina) 
+                        	) 
+                        {
+                            listaPersone.remove(i);
+                            trovato = true;
+                        }
+                        else 
+                        {
+                        	 i++;
+                        }
+                        
+                    }
+                    
+                    if (trovato) {
+                        IO.println("Persona eliminata con successo!");
+                    } else {
+                        IO.println("Persona non trovata!");
+                    }
+                    break;
+                
+                case 3:
+                	IO.println("Visualizzo persone:");
+                    
+                    for (Persona persona1 : listaPersone) {
+                        IO.println(persona1.toString());
+                    }
+                    break;
+
+				} 
+		
+		}while (scelta != 4);
+		IO.println("Arrivederci!");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ProvaFileTesto01 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Inserisci il testo che vuoi salvare");
+		String testo = input.nextLine();
+		
+		
+		try {
+				FileWriter writer = new FileWriter("file.txt");
+				BufferedWriter bf = new BufferedWriter(writer);
+				
+			    bf.write(testo);
+			    bf.close();
+			    System.out.println("File creato e scritto con successo");
+			} 
+		catch (IOException e) 
+		{
+			System.out.println("Errore nella creazione del file: " + e.getMessage());
+		} 
+		
+
+	}
+
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ProvaScritturaFileTesto {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Inserisci il testo che vuoi salvare");
+		String testo = input.nextLine();
+		try 
+		{
+				FileWriter writer = new FileWriter("file.txt");
+				BufferedWriter bf = new BufferedWriter(writer);
+				
+			    bf.write(testo);
+			    bf.close();
+			    System.out.println("File creato e scritto con successo");
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Errore nella creazione del file: " + e.getMessage());
+		} 
+		
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ProvaLetturaFileTesto {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		try 
+		{
+			FileReader fr = new FileReader("file.txt");
+			
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while ( (line = br.readLine()) != null)
+			 {			
+				 System.out.println(line);
+			}
+			br.close();
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Errore nella creazione del file: " + e.getMessage());
+		} 
+		
+
+	}
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import classiMie.IO;
+
+public class ProvaScritturaFileTesto {
+
+	public static void main(String[] args) {
+		int scelta;
+		String filename = "testo.txt";
+		
+		do {
+			
+				do {
+					    IO.println("1. Aggiungi testo");
+					    IO.println("2. Leggi tutto");
+					    IO.println("3. Esci");
+					    scelta = IO.getInt("Errore: devi inserire un numero");
+					    if (scelta < 1 || scelta > 3)
+					    {
+					    	IO.println("Errore: devi inserire un numero tra 1 e 3");
+					    }
+					} while (scelta < 1 || scelta > 3);
+				
+				switch (scelta) {
+					case 1:
+						   while (true) 
+						   {
+							    IO.println("Inserisci il testo da aggiungere (un vuoto INVIO PER FERMARTI): ");
+							    String testo = IO.getString();
+							    if (testo.equals(""))
+							    {
+							    	break; // Esci dal ciclo se l'input è vuoto                               
+							    }
+							    
+							    
+								try 
+								{
+										FileWriter writer = new FileWriter(filename, true);
+										BufferedWriter bf = new BufferedWriter(writer);
+										
+									    bf.write(testo);
+									    bf.newLine(); // Aggiunge una nuova riga dopo il testo
+									    bf.close();
+									   // System.out.println("File creato e scritto con successo");
+								} 
+								catch (IOException e) 
+								{
+									System.out.println("Errore nella creazione del file: " + e.getMessage());
+								}
+							    
+						   }
+						   IO.println("Sessione di scrittura finita!");
+					break;
+					
+					case 2:
+							try 
+							{
+								FileReader fr = new FileReader(filename);
+								
+								BufferedReader br = new BufferedReader(fr);
+								String line;
+								while ( (line = br.readLine()) != null)
+								 {			
+									 System.out.println(line);
+								}
+								br.close();
+							} 
+							catch (IOException e) 
+							{
+								System.out.println("Errore nella creazione del file: " + e.getMessage());
+							} 
+					break;
+				}
+				
+				IO.println("\n\n\nPREMI INVIO PRIMA DI TORNARE AL MENU...");
+				IO.getString();
+			} while (scelta != 3);
+		
+				
+		
+
+	}
+
+}
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+package classiMie;
+
+import java.util.Scanner;
+
+public class IO {
+	private static boolean errore;
+	
+	public static boolean isError() {
+		return errore;
+	}
+
+	public static boolean noError() {
+		return !errore;
+	}
+	
+	
+	public static void println(Object testo)
+	{
+		
+		System.out.println(testo);		
+	}
+
+	public static void print(Object testo)
+	{
+		
+		System.out.print(testo);		
+	}
+	
+	public static String getString()
+	{
+		errore = false;
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
+	}
+	
+	public static int getInt() {	
+		
+		String testo = getString();		
+		int numero = 0;
+		try {
+				numero = Integer.parseInt(testo);
+			} 
+		catch (NumberFormatException e) {
+				
+			errore = true;
+		}
+		return numero;
+	}
+	
+	public static int getInt(String errormessage)
+	{
+		int numero = getInt();
+		if (errore) {
+			System.out.println(errormessage);
+			numero = getInt(errormessage);
+		}
+		return numero;
+	}
+	
+	public static double getDouble() {
+		
+		String testo = getString();
+		testo = testo.replace(',', '.'); // sostituisco la virgola con il punto
+		double numero = 0;
+		try {
+			numero = Double.parseDouble(testo);
+		} catch (NumberFormatException e) {
+			// System.out.println("Non hai inserito un numero intero");
+			// numero = getInt();
+			errore = true;
+		}
+		return numero;
+	}
+	
+	public static double getDouble(String errormessage) {
+		double numero = getDouble();
+		if (errore) {
+			System.out.println(errormessage);
+			numero = getDouble(errormessage);
+		}
+		return numero;
+	}
+	
+	public static boolean getBoolean() {
+		
+		String testo = getString();
+		boolean valore = false;
+		if (testo.equalsIgnoreCase("true")) {
+			valore = true;
+		} else if (testo.equalsIgnoreCase("false")) {
+			valore = false;
+		} else {
+			errore = true;
+		}
+		return valore;
+	}
+	
+	public static boolean getBoolean(String errormessage) {
+		boolean valore = getBoolean();
+		if (errore) {
+			System.out.println(errormessage);
+			valore = getBoolean(errormessage);
+		}
+		return valore;
+	}
+	
+	
+	
+		
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import Dati.Persona;
+import classiMie.IO;
+
+public class GestionalePersone01 {
+
+	public static void main(String args[])
+	{
+		int scelta;
+		Persona p;
+		String fileName = "persona.dat";
+		// Per salvare
+		FileOutputStream fos; // questo per creare il file
+		ObjectOutputStream oos; // questo per scrivere nel file fos creato
+		
+		// Per recuperare i dati
+		FileInputStream fis; // questo per aprireil file
+		ObjectInputStream ois; // questo per leggere il file fis 
+		do
+		{
+			do
+			{
+				IO.println("Gestione Persone\n");
+				IO.println("1. Aggiungi Persona");
+				IO.println("2. Visualizza Persone");
+				IO.println("3. Esci");
+				
+				scelta = IO.getInt("Errore: inserire un numero!");
+				if (scelta < 1 || scelta > 3)
+				{
+					IO.println("Errore: inserire un numero tra 1 e 3!");
+				}
+			} while (scelta < 1 || scelta > 3);
+			
+			switch (scelta){
+				case 1:
+					
+					p = new Persona();
+					IO.println("Inserire il nome");
+					p.setNome(IO.getString());					
+					IO.println("Inserire il cognome");
+					p.setCognome(IO.getString());									
+					IO.println("Inserire l'email");					
+				    p.setEmail(IO.getString());
+
+					try {
+						fos = new FileOutputStream(fileName, true);
+						oos = new ObjectOutputStream(fos);
+						oos.writeObject(p);
+						oos.close();
+						fos.close();
+					}
+					catch (IOException e) {
+						IO.println("Errore: " + e.getMessage());
+					}
+					
+					IO.println("Persona salvata correttamente!");
+					
+				break;
+				
+				case 2:
+				break;
+			}
+			
+			
+			if (scelta != 3) {
+				IO.println("Premere il tasto INVIO per continuare...");				
+			}
+		} while (scelta != 3);
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+package Dati;
+
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+	
+	private String nome;
+	private String cognome;
+	private String email;
+	
+	public Persona() {
+		this.nome = "";
+        this.cognome = "";
+        this.email = "";    
+	}
+	
+	public Persona(String nome, String cognome, String email) {
+		this();
+		this.setNome(nome);
+		this.setCognome(cognome);
+		this.setEmail(email);
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + "\nCognome: " + this.cognome + "\nEmail: " + this.email;
+	}
+	
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Diario Personale in Console 
+Simulare un'applicazione da terminale dove l’utente può aggiungere note giornaliere a un 
+diario (file testuale “diario.txt”) oppure leggere il contenuto del diario. 
+Requisiti: 
+1. Il programma mostra un menu: 
+=== Diario Personale === 
+1. Aggiungi nuova nota 
+2. Leggi il diario 
+3. Esci 
+2. Se si sceglie 1, si chiede all’utente di scrivere una o più righe (finché non scrive "FINE") 
+e le si salva nel file diario.txt, in modalità append, insieme alla data. 
+3. Se si sceglie 2, si legge e si stampa tutto il contenuto del file diario.txt. 
+4. Se il file non esiste, viene creato automaticamente. 
+Concetti che rafforza: 
+• Uso di FileWriter, BufferedWriter, con append=true 
+• Uso di FileReader, BufferedReader 
+• Uso delle date (LocalDate.now() o new Date()) 
+• Struttura do-while con menu 
+• Gestione eccezioni
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
